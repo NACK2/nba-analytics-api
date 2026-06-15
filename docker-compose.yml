@@ -1,10 +1,9 @@
-version: '3.8'
 services:
   api:
     container_name: nba-analytics-api
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
       - '3000:3000'
     volumes:
@@ -14,7 +13,7 @@ services:
       - db
   pgadmin:
     container_name: nba-analytics-pgadmin
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4:9.15
     restart: unless-stopped
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
@@ -23,6 +22,8 @@ services:
       - '5050:80'
     volumes:
       - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - db
   db:
     container_name: nba-analytics-db
     image: postgres:18-alpine
@@ -37,5 +38,5 @@ services:
       - '5432:5432'
 
 volumes:
-  pgdata:
   pgadmin_data:
+  pgdata:
