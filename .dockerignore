@@ -5,6 +5,5 @@ build/
 .env
 npm-debug.log*
 pnpm-debug.log*
-pnpm-lock.yaml
 .vscode
 Dockerfile*
