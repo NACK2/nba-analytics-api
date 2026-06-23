@@ -36,11 +36,8 @@ coverage/
 !.vscode/extensions.json
 
 # dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env*
+!.env.example
 
 # temp directory
 .temp
@@ -54,3 +51,5 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+/generated/prisma
